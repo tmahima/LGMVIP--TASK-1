@@ -1,42 +1,40 @@
-function addTask() {
-    let Taskname = document.getElementById("task-input").value;
-    if (Taskname == "") {
-        alert("Please enter a task to continue");
+/** @format */
+const input = document.querySelector("input");
+const btn = document.querySelector(".addTask > button");
+
+btn.addEventListener("click", addList);
+input.addEventListener("keyup", (e) => {
+    e.keyCode === 13 ? addList(e) : null;
+});
+
+function addList(e) {
+    const notCompleted = document.querySelector(".notCompleted");
+    const Completed = document.querySelector(".Completed");
+
+    const newLi = document.createElement("li");
+    const checkBtn = document.createElement("button");
+    const delBtn = document.createElement("button");
+
+    checkBtn.innerHTML = '<i class="fa fa-check"></i>';
+    delBtn.innerHTML = '<i class="fa fa-trash"></i>';
+
+    if (input.value !== "") {
+        newLi.textContent = input.value;
+        input.value = "";
+        notCompleted.appendChild(newLi);
+        newLi.appendChild(checkBtn);
+        newLi.appendChild(delBtn);
     }
-    else {
-        let list = document.getElementById("list");
-        let item = document.createElement('li');
-        let a = document.createElement('a');
-        let b = document.createElement('a');
-        a.className = 'fa-solid fa-xmark';
-        b.className = 'fa-solid fa-check';
-        item.textContent = Taskname;
-        a.style.textDecoration = 'none';
-        a.style.color = 'red';
-        b.style.color = 'green';
-        b.style.textDecoration = 'none';
-        item.appendChild(a);
-        item.appendChild(b);
-        let first = list.firstElementChild;
-        if (first == null) {
-            list.appendChild(item);
-            document.getElementById("task-input").value = "";
-        }
-        else {
-            list.insertBefore(item, first);
-            document.getElementById("task-input").value = "";
-        }
-        let del = a;
-        del.addEventListener('click', function (e) {
-            let list = document.getElementById("list");
-            let item = e.target.parentNode;
-            list.removeChild(item);
-        })
-        let done = b;
-        done.addEventListener('click', function (e) {
-            let item = e.target.parentNode;
-            item.style.color = 'red';
-            item.style.textDecoration = 'line-through';
-        })
-    }
+
+    checkBtn.addEventListener("click", function () {
+        const parent = this.parentNode;
+        parent.remove();
+        Completed.appendChild(parent);
+        checkBtn.style.display = "none";
+    });
+
+    delBtn.addEventListener("click", function () {
+        const parent = this.parentNode;
+        parent.remove();
+    });
 }
