@@ -1,32 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>To-Do-List</title>
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="style.js"></script>
+    <title>TO DO LIST</title>
 </head>
 
 <body>
-	<div class="container">
-		<div class="addTask">
-			<input type="text" placeholder="Add a Task">
-			<button>Add</button>
-		</div>
-
-		<ol class="notCompleted">
-			<h3>Not Completed</h3>
-		</ol>
-
-		<ol class="Completed">
-			<h3>Completed</h3>
-		</ol>
-	</div>
-
-	<script src="Style.js"></script>
+    <div class="container">
+        <div class="task">
+            <p id="heading"> <i class="fa-solid fa-list-check"></i>My To Do List</p>
+            <p class="sub-heading">Put yourself at the top of your to-do list every single day and the rest will fall
+                into
+                place!</p>
+            <input id="task-input" type="text" placeholder="Enter your task here">
+            <button class="btn" onclick="addTask()">Add</button>
+        </div>
+        <div class="add-task">
+            <p id="alert-message">- -THE TIME HAS COME &#129299;- -</p>
+            <ul id="list">
+            </ul>
+        </div>
+    </div>
 </body>
 
 </html>
